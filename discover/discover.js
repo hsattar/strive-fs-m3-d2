@@ -29,14 +29,16 @@ const displaySongs = (songs, artist) => {
     artistTitle.className = 'col-12 text-center my-3'
     artistTitle.innerText = artist.toUpperCase()
     row.appendChild(artistTitle)
-    songs.forEach(song => {
+    const tempArray = []
+    songs.forEach(song => tempArray.push(song))
+    tempArray.forEach(song => {
         const card = document.createElement('div')
         card.className = 'hp-subhero-card col-12 col-sm-6 col-md-4 col-lg-3 m-2 rounded'
         card.innerHTML = `
         <img src=${song.album.cover_xl} class="card-img-top pt-2 img-fluid" alt="...">
         <div class="card-body">
             <p class="hp-subhero-title">${song.title}</p>
-            <p></p>
+            <p class="album-title">${song.album.title}</p>
             <p class="hp-subhero-subtitle mb-0"></p>
         </div>`
         row.appendChild(card)
@@ -45,3 +47,30 @@ const displaySongs = (songs, artist) => {
 }
 
 }
+
+
+const listAlbums = () => {
+    const albumModalContent = document.querySelector('.album-modal-body')
+    const albumTitles = document.querySelectorAll('.album-title')
+    albumTitles.forEach(album => {
+        albumModalContent.innerHTML += `<p>${album.innerText}</p>`
+    })
+}
+
+const countUniqueAlbums = () => {
+    const albumTitles = document.querySelectorAll('.album-title')
+    const uniqueAlbums = []
+    albumTitles.forEach(album => {
+        if (uniqueAlbums.indexOf(album.innerText) < 0) uniqueAlbums.push(album.innerText)
+        // uniqueAlbums.push(album.innerText)
+        // console.log(uniqueAlbums.indexOf(album.innerText))
+
+    })
+    alert(uniqueAlbums.length)
+}
+
+const listAlbumsBtn = document.querySelector('#list-albums')
+listAlbumsBtn.addEventListener('click', listAlbums)
+
+const uniqueAlbumsBtn = document.querySelector('#unique-albums')
+uniqueAlbumsBtn.addEventListener('click', countUniqueAlbums)
