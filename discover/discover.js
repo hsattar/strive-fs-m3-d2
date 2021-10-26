@@ -1,0 +1,1 @@
+const mykey = config.MY_KEY;

@@ -43,9 +43,10 @@ const toggleTheme = () => {
 //     toggleTheme()
 // }
 
-themeToggle.onclick = () => {
-    toggleTheme()
-}
+// themeToggle.onclick = () => {
+//     toggleTheme()
+// }
+
 
 const goodMorningCards = [
     {
